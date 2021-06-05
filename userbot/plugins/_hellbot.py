@@ -1,4 +1,4 @@
-"""HellBot Help Command"""
+"""EfsaneBot Yardım Komutu"""
 
 from userbot import *
 from userbot import CMD_HELP
@@ -7,7 +7,7 @@ from userbot.utils import *
 
 @bot.on(admin_cmd(pattern="plinfo(?: |$)(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="plinfo(?: |$)(.*)", allow_sudo=True))
-async def hellbott(event):
+async def efsanebot(event):
     """ .plinfo cmd """
     args = event.pattern_match.group(1).lower()
     if args:

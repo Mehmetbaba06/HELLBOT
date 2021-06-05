@@ -16,7 +16,7 @@ async def _(event):
 
     input_str = event.pattern_match.group(1)
 
-    mone = await edit_or_reply(event, "Processing ...")
+    mone = await edit_or_reply(event, "işleme aldım ...")
 
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
 
@@ -36,7 +36,7 @@ async def _(event):
 
             directory_name = downloaded_file_name
 
-            await edit_or_reply(event, "Finish downloading to my local")
+            await edit_or_reply(event, "Yerel bölgeme indirmeyi bitir")
 
             zipfile.ZipFile(directory_name + ".zip", "w", zipfile.ZIP_DEFLATED).write(
                 directory_name
@@ -45,7 +45,7 @@ async def _(event):
             await borg.send_file(
                 event.chat_id,
                 directory_name + ".zip",
-                caption="Zipped By [Hêllẞø†](t.me/hellbot_official)",
+                caption="Zippet by [EfsaneBot](t.me/Sohbetlobisi)",
                 force_document=True,
                 allow_cache=False,
                 reply_to=event.message.id,
@@ -61,7 +61,7 @@ async def _(event):
 
                 pass
 
-            await edit_or_reply(event, "task Completed")
+            await edit_or_reply(event, "görev Tamamlandı")
 
             await asyncio.sleep(3)
 
@@ -80,5 +80,5 @@ async def _(event):
         )
 
         await edit_or_reply(event, 
-            "Local file compressed to `{}`".format(directory_name + ".zip")
+            "Yerel dosya sıkıştırıldı `{}`".format(directory_name + ".zip")
         )

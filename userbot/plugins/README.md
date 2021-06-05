@@ -1,18 +1,18 @@
-## Mandatory Imports
+## Zorunlu İthalat
 ```python3
 None
 ```
-There is None Mandatory Imports. Because Var, bot and command are already automatically imported.
+Zorunlu Alma Yok. Çünkü Var, bot ve komut zaten otomatik olarak içe aktarılıyor.
 
-## Explanation
-The Mandatory Imports are now automatically imported.
+## açıklama 
+Zorunlu İçe Aktarmalar artık otomatik olarak içe aktarılıyor.
 
-### Formation
-Now I will show a short script to show the formation of the desired script.
+### formasyon
+Şimdi istenen senaryonun oluşumunu göstermek için kısa bir senaryo göstereceğim..
 ```python3
 @command(pattern="^.alive", outgoing=True)
-async def hello_world(event):
+async def hello_word_world(event):
     if event.fwd_from:
         return
-    await event.edit("**HELLO WORLD**\n\nThe following is controlling me too!\n" + Var.SUDO_USERS)
+    await event.edit("**Merhaba Dünya**\n\nAşağıdakiler beni de kontrol ediyor.!\n" + Var.SUDO_USERS)
 ```

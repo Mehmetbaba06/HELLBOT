@@ -23,9 +23,9 @@ async def _(event):
     if event.fwd_from:
         return
     if not event.is_reply:
-        await edit_or_reply(event, "Reply to a file to compress it. Bruh.")
+        await edit_or_reply(event, "Sıkıştırmak için bir dosyayı yanıtlayın. Hımm.")
         return
-    mone = await edit_or_reply(event, "Processing ...")
+    mone = await edit_or_reply(event, "işleme aldım...")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -45,7 +45,7 @@ async def _(event):
     await borg.send_file(
         event.chat_id,
         directory_name + ".zip",
-        caption="**Zipped!**",
+        caption="**Sıkıştırılmış!**",
         force_document=True,
         allow_cache=False,
         reply_to=event.message.id,
@@ -67,7 +67,7 @@ def zipdir(path, ziph):
 async def _(event):
     if event.fwd_from:
         return
-    mone = await edit_or_reply(event, "Processing ...")
+    mone = await edit_or_reply(event, "işleme aldım ...")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -92,7 +92,7 @@ async def _(event):
             zip_ref.extractall(extracted)
         filename = sorted(get_lst_of_files(extracted, []))
         # filename = filename + "/"
-        await edit_or_reply(event, "Unzipping now")
+        await edit_or_reply(event, "Şimdi fermökeni çöz")
         # r=root, d=directories, f = files
         for single_file in filename:
             if os.path.exists(single_file):
@@ -105,14 +105,14 @@ async def _(event):
                     await bot.send_file(
                         event.chat_id,
                         single_file,
-                        caption=f"**Unzipped** `{caption_rts}`",
+                        caption=f"**Sıkıştırması** `{caption_rts}`",
                         force_document=force_document,
                         supports_streaming=supports_streaming,
                         allow_cache=False,
                         reply_to=event.message.id,
                         attributes=document_attributes,
                         # progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                        #     progress(d, t, event, c_time, "trying to upload")
+                        #     progress(d, t, event, c_time, "yüklemeye çalışmak")
                         # )
                     )
                 except Exception as e:
@@ -138,9 +138,9 @@ def get_lst_of_files(input_directory, output_lst):
 
 
 CmdHelp ("zipper").add_command(
-  "zip", "<reply to media>", "Makes a zip file of replied media"
+  "zip", "<reply to media>", "Yanıtlanan medyanın zip dosyasını oluşturur"
 ).add_command(
-  "unzip", "<reply to a zip file>", "Unzips the replied zip file and sends the files from that zip file"
+  "unzip", "<reply to a zip file>", "Yanıtlanan zip dosyasını çözar ve dosyaları o zip dosyasından gönderir"
 ).add_command(
-  "compress", "<reply to media>", "Compress the replied media"
+  "compress", "<reply to media>", "Yanıtlanan ortamı sıkıştırma"
 ).add()

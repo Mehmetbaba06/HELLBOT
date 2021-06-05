@@ -1,20 +1,3 @@
-#    Copyright (C) @kraken_the_badass 2021-2022
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-#
-#
-#    This Inline Helper Code is solely owned by @kraken_the_badass
-#    You Should Not Copy This Code Without Proper Permission.
-
 from math import ceil
 from re import compile
 import asyncio
@@ -55,18 +38,18 @@ def button(page, modules):
     buttons.append(
         [
             custom.Button.inline(
-               f"◀️ ᏰᎯᏣᏦ {hell_emoji}", data=f"page({(max_pages - 1) if page == 0 else (page - 1)})"
+               f"◀️ Geri {efsane_emoji}", data=f"page({(max_pages - 1) if page == 0 else (page - 1)})"
             ),
             custom.Button.inline(
-               f"•{hell_emoji} ❌ {hell_emoji}•", data="close"
+               f"•{efsane_emoji} ❌ {efsane_emoji}•", data="kapalı"
             ),
             custom.Button.inline(
-               f"{hell_emoji} ᏁᏋﾒᎿ ▶️", data=f"page({0 if page == (max_pages - 1) else page + 1})"
+               f"{efsane_emoji} ileri ▶️", data=f"page({0 if page == (max_pages - 1) else page + 1})"
             ),
         ]
     )
     return [max_pages, buttons]
-    # Changing this line may give error in bot as i added some special cmds in hellbot channel to get this module work...
+    # Bu hattı değiştirmek, bu modülün çalışmasını sağlamak için efsanebot kanalına bazı özel CMD'ler ekledikçe botta hata verebilir...
 
     modules = CMD_HELP
 if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
@@ -75,12 +58,12 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         builder = event.builder
         result = None
         query = event.text
-        if event.query.user_id == bot.uid and query == "@HellBot_Official":
+        if event.query.user_id == bot.uid and query == "@sohbetlobisi":
             rev_text = query[::-1]
             veriler = button(0, sorted(CMD_HELP))
             result = await builder.article(
                 f"Hey! Only use .help please",
-                text=f"**Running HellBot**\n\n__Number of plugins installed__ :`{len(CMD_HELP)}`\n**page:** 1/{veriler[0]}",
+                text=f"**koşarak efsaneBot**\n\n__Number of plugins installed__ :`{len(CMD_HELP)}`\n**page:** 1/{veriler[0]}",
                 buttons=veriler[1],
                 link_preview=False,
             )
@@ -94,21 +77,21 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             )
         else:
             result = builder.article(
-                "@HellBot_Official",
-                text="""**Hey! This is [Hêllẞø†.](https://t.me/HellBot_Official) \nYou can know more about me from the links given below 👇**""",
+                "@sohbetlobisi",
+                text="""**Selam! Bu.[Efsane.](https://t.me/sohbetlobisi) \n 👇Hakkımda daha fazla şeyi aşağıda verilen linklerden bilebilirsiniz.**""",
                 buttons=[
                     [
-                        custom.Button.url("🔥 CHANNEL 🔥", "https://t.me/HellBot_Official"),
+                        custom.Button.url("🔥 KANAL 🔥", "https://t.me/Sohbetlobisi"),
                         custom.Button.url(
-                            "⚡ GROUP ⚡", "https://t.me/HellBot_Official_Chat"
+                            "⚡ GROUP ⚡", "https://t.me/sohbetskyfall"
                         ),
                     ],
                     [
                         custom.Button.url(
-                            "✨ REPO ✨", "https://github.com/HellBoy-OP/HellBot"),
+                            "✨ YARDIMCI ✨", "https://t.me/mehmett_12"),
                         custom.Button.url
                     (
-                            "🔰 TUTORIAL 🔰", "https://youtu.be/M2FQJq_sHp4"
+                            "🔰 BOTUN SAHİBİ 🔰", "https://t.me/Efsanestar"
                     )
                     ],
                 ],
@@ -120,7 +103,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
     async def page(event):
         if not event.query.user_id == bot.uid:
             return await event.answer(
-                "Hoo gya aapka. Kabse tapar tapar dabae jaa rhe h. Khudka bna lo na agr chaiye to. © Hêllẞø† ™",
+                "Khudka bna lo na agr chaiye to. © EfsaneBot ™",
                 cache_time=0,
                 alert=True,
             )

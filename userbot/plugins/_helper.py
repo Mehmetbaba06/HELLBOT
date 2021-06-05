@@ -36,7 +36,7 @@ async def info(event):
     input_str = event.pattern_match.group(1)
     if input_str == "text":
         string = (
-            "Total {count} commands found in {plugincount} sudo plugins of Hêllẞø†\n\n"
+            "toplam {count} komutları {plugincount} EfsaneBot sudo eklentileri\n\n"
         )
         hellcount = 0
         plugincount = 0
@@ -59,7 +59,7 @@ async def info(event):
                 .get("key")
             )
             url = f"https://nekobin.com/{key}"
-            reply_text = f"All commands of the Hêllẞø† are [here]({url})"
+            reply_text = f"Tüm komutları EfsaneBot ayarlar [here]({url})"
             await event.reply(reply_text, link_preview=False)
             return
         await event.reply(
@@ -68,7 +68,7 @@ async def info(event):
         return
     if input_str:
         if input_str in SUDO_LIST:
-            string = "<b>{count} Commands found in plugin {input_str}:</b>\n\n"
+            string = "<b>{count} Eklentide bulunan komutlar {input_str}:</b>\n\n"
             hellcount = 0
             for i in SUDO_LIST[input_str]:
                 string += f"  •  <code>{i}</code>"

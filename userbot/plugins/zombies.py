@@ -72,10 +72,10 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 async def rm_deletedacc(show):
     con = show.pattern_match.group(1).lower()
     del_u = 0
-    del_status = "`No zombies or deleted accounts found in this group, Group is clean`"
+    del_status = "`Zombi veya silinmiş hesap bulunamadı bu grupta, Grup temizdir`"
     if con != "clean":
         event = await edit_or_reply(
-            show, "`Searching for ghost/deleted/zombie accounts...`"
+            show, "`Hayalet aranıyor/Silin/zombi hesapları...`"
         )
         async for user in show.client.iter_participants(show.chat_id):
             if user.deleted:
@@ -90,10 +90,10 @@ async def rm_deletedacc(show):
     admin = chat.admin_rights
     creator = chat.creator
     if not admin and not creator:
-        await edit_or_reply(show, "`I am not an admin here!`")
+        await edit_or_reply(show, "`Burada yönetici değilim.!`")
         return
     event = await edit_or_reply(
-        show, "`Deleting deleted accounts...\nOh I can do that?!?!`"
+        show, "`Silinen hesaplar siliniyor...\nBunu yapabilirim.?!?!`"
     )
     del_u = 0
     del_a = 0
@@ -104,7 +104,7 @@ async def rm_deletedacc(show):
                 await sleep(0.5)
                 del_u += 1
             except ChatAdminRequiredError:
-                await edit_or_reply(event, "`I don't have ban rights in this group`")
+                await edit_or_reply(event, "`Bu grupta yasaklama hakkım yok.`")
                 return
             except UserAdminInvalidError:
                 del_a += 1
@@ -125,7 +125,7 @@ async def rm_deletedacc(show):
 
 
 CmdHelp("zombies").add_command(
-  "zombies", None, "Searches for the deleted/ghost/zombies account in the group"
+  "zombies", None, "Silinenleri arar/hayalet/gruptaki zombi hesabı"
 ).add_command(
-  "zombies clean", None, "Bans the ghost/deleted/zombies account from the group. Makes the Group a better place"
+  "zombies clean", None, "Hayaleti yasaklar/Silin/gruptan zombi hesabı. Grubu daha iyi bir yer yapar"
 ).add()

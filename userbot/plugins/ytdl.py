@@ -1,4 +1,4 @@
-# Thanks to @AvinashReddy3108 for this plugin
+# Bu eklenti için teşekkürler @EfsaneStar
 
 """
 Audio and video downloader using Youtube-dl
@@ -54,8 +54,8 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
 
 
 def humanbytes(size):
-    """Input size in bytes,
-    outputs in a human readable format"""
+    """Bayt olarak giriş boyutu,
+    okunabilir biçimde çıktılar"""
     # https://stackoverflow.com/a/49361727/4723940
     if not size:
         return ""
@@ -70,8 +70,8 @@ def humanbytes(size):
 
 
 def time_formatter(milliseconds: int) -> str:
-    """Inputs time in milliseconds, to get beautified time,
-    as string"""
+    """Giriş süresi milisaniye cinsinden, güzelleşmiş zaman elde etmek için,
+    dize olarak"""
     seconds, milliseconds = divmod(int(milliseconds), 1000)
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
@@ -137,34 +137,34 @@ async def download_video(v_url):
         video = True
 
     try:
-        await edit_or_reply(v_url, "`Fetching data, please wait..`")
+        await edit_or_reply(v_url, "`Veri getirtiyor, lütfen bekleyin..`")
         with YoutubeDL(opts) as ytdl:
             ytdl_data = ytdl.extract_info(url)
     except DownloadError as DE:
         await edit_or_reply(v_url, f"`{str(DE)}`")
         return
     except ContentTooShortError:
-        await edit_or_reply(v_url, "`The download content was too short.`")
+        await edit_or_reply(v_url, "`İndirme içeriği çok kısaydı.`")
         return
     except GeoRestrictedError:
         await edit_or_reply(v_url, 
-            "`Video is not available from your geographic location due to geographic restrictions imposed by a website.`"
+            "`Bir web sitesi tarafından uygulanan coğrafi kısıtlamalar nedeniyle video coğrafi konumunuzdan kullanılamıyor.`"
         )
         return
     except MaxDownloadsReached:
-        await edit_or_reply(v_url, "`Max-downloads limit has been reached.`")
+        await edit_or_reply(v_url, "`Maksimum indirme sınırına ulaşıldı.`")
         return
     except PostProcessingError:
-        await edit_or_reply(v_url, "`There was an error during post processing.`")
+        await edit_or_reply(v_url, "`İşlem sonrası işlem sırasında bir hata oluştu.`")
         return
     except UnavailableVideoError:
-        await edit_or_reply(v_url, "`Media is not available in the requested format.`")
+        await edit_or_reply(v_url, "`Ortam istenen biçimde kullanılamıyor.`")
         return
     except XAttrMetadataError as XAME:
         await edit_or_reply(v_url, f"`{XAME.code}: {XAME.msg}\n{XAME.reason}`")
         return
     except ExtractorError:
-        await edit_or_reply(v_url, "`There was an error during info extraction.`")
+        await edit_or_reply(v_url, "`Bilgi ayıklama sırasında bir hata oluştu.`")
         return
     except Exception as e:
         await edit_or_reply(v_url, f"{str(type(e)): {str(e)}}")
@@ -208,7 +208,7 @@ async def download_video(v_url):
             caption=ytdl_data["title"],
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                 progress(
-                    d, t, v_url, c_time, "Uploading..", f"{ytdl_data['title']}.mp4"
+                    d, t, v_url, c_time, "Yükleme..", f"{ytdl_data['title']}.mp4"
                 )
             ),
         )
@@ -216,7 +216,7 @@ async def download_video(v_url):
         await v_url.delete()
 
 CmdHelp("ytdl").add_command(
-  "yta", "<yt link>", "Extracts the audio from given youtube link and uploads it to telegram"
+  "yta", "<yt link>", "Verilen youtube bağlantısından sesi çıkarır ve telegram'a yükler"
 ).add_command(
-  "ytv", "<yt link>", "Extracts the video from given youtube link and uploads it to telegram"
+  "ytv", "<yt link>", "Verilen youtube bağlantısından videoyu çıkarır ve telegram'a yükler"
 ).add()

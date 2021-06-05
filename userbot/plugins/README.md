@@ -11,7 +11,7 @@ Zorunlu İçe Aktarmalar artık otomatik olarak içe aktarılıyor.
 Şimdi istenen senaryonun oluşumunu göstermek için kısa bir senaryo göstereceğim..
 ```python3
 @command(pattern="^.alive", outgoing=True)
-async def hello_word_world(event):
+async def hello_world(event):
     if event.fwd_from:
         return
     await event.edit("**Merhaba Dünya**\n\nAşağıdakiler beni de kontrol ediyor.!\n" + Var.SUDO_USERS)
